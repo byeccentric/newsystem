@@ -10,21 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
-const styles = theme => ({
-    margin: {
-        margin: theme.spacing.unit,
-    },
-    main: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh'
-    },
-    button: {
-        marginTop: '20px'
-    }
-});
+import styles from './form-styles';
 
 function InputWithIcon(props) {
     const { classes } = props;

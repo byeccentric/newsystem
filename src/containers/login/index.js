@@ -2,7 +2,7 @@ import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Page from '../../components/layout';
-import Form from './form/';
+import Form from '../../components/login/form/';
 
 export default class Login extends Page {
     constructor() {
