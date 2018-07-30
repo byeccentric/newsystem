@@ -27,16 +27,18 @@ export default function reducer(state = initialState, action) {
         }
 
         case "ADD_FTP": {
+            console.log(state);
+            action.payload.id = state.items.length + 1 + '';
             return {
                 ...state,
-                ftps: [...state.ftps, action.payload],
+                items: [...state.items, action.payload],
             }
         }
 
         case "EDIT_FTP": {
             return {
                 ...state,
-                ftps: state.ftps.map(ftp => {
+                items: state.items.map(ftp => {
                     if (ftp.id === action.payload.id) {
                         ftp.id = action.payload.id;
                         ftp.login = action.payload.login;
@@ -52,7 +54,7 @@ export default function reducer(state = initialState, action) {
         case "DELETE_FTP": {
             return {
                 ...state,
-                ftps: state.ftps.filter(ftp => parseInt(ftp.id, 10) !== action.payload)
+                items: state.items.filter(ftp => parseInt(ftp.id, 10) !== action.payload)
             }
         }
 

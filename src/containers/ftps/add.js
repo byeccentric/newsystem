@@ -2,15 +2,14 @@ import React from 'react'
 import { connect } from "react-redux"
 
 import Page from '../../components/layout';
-import Table from '../../components/ftps/table/';
-import Preloader from '../../components/layout/preloader/';
+import Form from '../../components/ftps/form/';
 import TopMenu from '../../components/layout/topmenu';
-import {getFtps} from './actions';
+import {addFtp, getFtps} from './actions';
 
-class Ftps extends Page {
+class FtpsAdd extends Page {
     constructor() {
         super();
-        this.state.title = 'ФТПСки';
+        this.state.title = 'ФТПСхи добавить';
     }
 
     componentDidMount() {
@@ -19,11 +18,19 @@ class Ftps extends Page {
         }
     }
 
+    addFtp(event) {
+        let data = {
+            id: this.props.match.params.id
+        };
+        Array.from(event.target.querySelectorAll('input')).map(item => data[item.getAttribute('id')] = item.value);
+        this.props.dispatch(addFtp(data));
+    }
+
     topMenu() {
         const links = [
             {
-                name: 'Добавить',
-                link: '/ftps/add'
+                name: 'К списку',
+                link: '/ftps'
             }
         ];
 
@@ -33,14 +40,9 @@ class Ftps extends Page {
     }
 
     content() {
-        if (this.props.fetching) {
-            return (
-                <Preloader />
-            )
-        }
         return (
             <React.Fragment>
-                <Table items={this.props.ftps} />
+                <Form onSubmit={this.addFtp.bind(this)}/>
             </React.Fragment>
         )
     }
@@ -53,4 +55,4 @@ const mapStateToProps = store => ({
     error: store.ftps.errorMsg
 })
 
-export default connect(mapStateToProps)(Ftps)
+export default connect(mapStateToProps)(FtpsAdd)

@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-import Clipboard from "clipboard"
+import { Link } from 'react-router-dom'
+import Clipboard from "clipboard";
 
 import styles from './table-styles';
 
@@ -37,7 +38,7 @@ class ftpRow extends Component {
                     <Button className={classes.button + ' copyMe'} data-clipboard-target={"#dataid" + id}>Копировать данные</Button>
                 </TableCell>
                 <TableCell className={classes.centered}>
-                    <Button color="primary" className={classes.button}>Изменить</Button>
+                    <Button color="primary" className={classes.button} component={(props) => <Link to={'/ftps/edit/'+id} {...props} />}>Изменить</Button>
                     <Button color="secondary" className={classes.button}>Удалить</Button>
                 </TableCell>
             </TableRow>

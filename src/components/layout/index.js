@@ -21,6 +21,10 @@ export default class Page extends Component {
         )
     }
 
+    topMenu() {
+        return;
+    }
+
     content() {
         return (
             <div>
@@ -43,9 +47,9 @@ export default class Page extends Component {
                 <CssBaseline>
                     {this.header()}
                     <Content>
+                        {this.topMenu()}
                         {this.content()}
                     </Content>
-                    {this.footer()}
                 </CssBaseline>
             </React.Fragment>
         )

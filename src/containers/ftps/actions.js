@@ -4,6 +4,36 @@ let {FETCHED, FETCHING, FAIL} = ftps.commands;
 let messages = ftps.messages;
 let urls = ftps.urls;
 
+export function addFtp(item) {
+    return function(dispatch) {
+        /*$.post(
+            'http://test.byeccentric.pw/ajax.php', {
+                mod: 'ftps',
+                cmd: 'edit',
+                type: item.type,
+                id: item.id,
+                name: item.name,
+                login: item.login,
+                password: item.password,
+                server: item.server
+            },
+            function(data) {
+                item.id = data.id;
+                dispatcher.dispatch({
+                    type: "CREATE_FTP",
+                    data: item
+                });
+            },
+            'json'
+        );*/
+
+        dispatch({
+            type:"ADD_FTP",
+            payload: item
+        });
+
+    }
+}
 
 export function editFtp(item) {
     return function(dispatch) {
@@ -28,15 +58,8 @@ export function editFtp(item) {
             'json'
         );*/
 
-        const type = item.type;
-
-        if (type === 'add') {
-            item.id = String(Math.round(Math.random() * 50));
-        }
-        delete item.type;
-
         dispatch({
-            type: type.toUpperCase()+"_FTP",
+            type: "EDIT_FTP",
             payload: item
         });
 
