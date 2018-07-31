@@ -13,4 +13,4 @@ Working on:
 - Meal
 - Sport
 
-######As soon as possible tests will be added to the code
+As soon as possible tests will be added to the code
