@@ -22,7 +22,10 @@ export const ftps = {
     commands: {
         FETCHED: 'FTPS_FETCHED',
         FETCHING: 'FTPS_FETCHING',
-        FAIL: 'FTPS_REJECTED'
+        FAIL: 'FTPS_REJECTED',
+        ADD: 'FTPS_ADDED',
+        EDIT: 'FTPS_EDITED',
+        DELETE: 'FTPS_DELETED'
     },
     messages: {
         'wrong_email_or_password': 'Некорректно введен логин или пароль',

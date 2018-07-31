@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {Provider} from "react-redux"
-import {BrowserRouter as Router, Switch} from 'react-router-dom'
+import React, { Component } from 'react';
+import { Provider } from "react-redux"
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import store from "./store/store"
 import PrivateRoute from "./helpers/router"

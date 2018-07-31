@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Snackbar from '@material-ui/core/Snackbar';
-import IconButton from '@material-ui/core/IconButton';
+import {Button, Snackbar, IconButton, Typography}  from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close'
-import Typography from '@material-ui/core/Typography';
 
 import Input from './input';
 import styles from './form-styles';
@@ -93,6 +90,12 @@ class form extends Component {
 
 form.propTypes = {
     classes: PropTypes.object.isRequired,
+    name: PropTypes.string,
+    login: PropTypes.string,
+    password: PropTypes.string,
+    server: PropTypes.string,
+    onSubmit: PropTypes.func.isRequired
+
 };
 
 export default withStyles(styles)(form);

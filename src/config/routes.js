@@ -1,11 +1,12 @@
 // PAGES
-import Index from "../containers/index"
-import Ftps from "../containers/ftps/"
-import FtpsEdit from "../containers/ftps/edit"
-import FtpsAdd from "../containers/ftps/add"
-import Challenge from "../containers/challenge"
-import Login from "../containers/login"
-import NoMatch from "../components/404"
+import Index from "../containers/index";
+import Ftps from "../containers/ftps/";
+import FtpsEdit from "../containers/ftps/edit";
+import FtpsAdd from "../containers/ftps/add";
+import Challenge from "../containers/challenge";
+import Calendar from "../containers/calendar";
+import Login from "../containers/login";
+import NoMatch from "../components/404";
 
 export const routes = [
     {
@@ -18,7 +19,7 @@ export const routes = [
         //redirect: "/auth"
     },
     {
-        name: 'FTP',
+        name: 'FTP EDIT',
         path: '/ftps/edit/:id',
         component: FtpsEdit,
         exact: false,
@@ -27,7 +28,7 @@ export const routes = [
         //redirect: "/auth"
     },
     {
-        name: 'FTP',
+        name: 'FTP ADD',
         path: '/ftps/add',
         component: FtpsAdd,
         exact: false,
@@ -44,11 +45,19 @@ export const routes = [
         menu: true,
         //redirect: "/auth"
     },
-
     {
         name: 'Челленжи',
         path: '/challenge',
         component: Challenge,
+        exact: false,
+        auth: true,
+        menu: true,
+        //redirect: "/auth"
+    },
+    {
+        name: 'Календарь',
+        path: '/calendar',
+        component: Calendar,
         exact: false,
         auth: true,
         menu: true,

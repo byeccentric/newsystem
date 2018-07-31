@@ -1,6 +1,6 @@
 import { ftps } from '../../config/app';
 
-let {FETCHED, FETCHING, FAIL} = ftps.commands;
+const { FETCHED, FETCHING, FAIL, ADD, EDIT, DELETE } = ftps.commands;
 
 const initialState = {
     items: [],
@@ -26,8 +26,7 @@ export default function reducer(state = initialState, action) {
             }
         }
 
-        case "ADD_FTP": {
-            console.log(state);
+        case ADD: {
             action.payload.id = state.items.length + 1 + '';
             return {
                 ...state,
@@ -35,12 +34,11 @@ export default function reducer(state = initialState, action) {
             }
         }
 
-        case "EDIT_FTP": {
+        case EDIT: {
             return {
                 ...state,
                 items: state.items.map(ftp => {
-                    if (ftp.id === action.payload.id) {
-                        ftp.id = action.payload.id;
+                    if (ftp.id === parseInt(action.payload.id, 10)) {
                         ftp.login = action.payload.login;
                         ftp.name = action.payload.name;
                         ftp.password = action.payload.password;
@@ -51,10 +49,10 @@ export default function reducer(state = initialState, action) {
             }
         }
 
-        case "DELETE_FTP": {
+        case DELETE: {
             return {
                 ...state,
-                items: state.items.filter(ftp => parseInt(ftp.id, 10) !== parseInt(action.payload, 10))
+                items: state.items.filter(ftp => ftp.id !== parseInt(action.payload, 10))
             }
         }
 

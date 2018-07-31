@@ -5,12 +5,12 @@ import Page from '../../components/layout';
 import Table from '../../components/ftps/table/';
 import Preloader from '../../components/layout/preloader/';
 import TopMenu from '../../components/layout/topmenu';
-import {getFtps, deleteFtp} from './actions';
+import { getFtps, deleteFtp } from './actions';
 
 class Ftps extends Page {
     constructor() {
         super();
-        this.state.title = 'ФТПСки';
+        this.state.title = 'Список доступов FTP';
     }
 
     componentDidMount() {

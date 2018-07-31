@@ -1,34 +1,12 @@
 import { ftps } from "../../config/app"
 
-let {FETCHED, FETCHING, FAIL} = ftps.commands;
-let messages = ftps.messages;
-let urls = ftps.urls;
+const { FETCHED, FETCHING, ADD, EDIT, DELETE } = ftps.commands;
+/*const { messages, urls } = ftps.messages;*/
 
 export function addFtp(item) {
     return function(dispatch) {
-        /*$.post(
-            'http://test.byeccentric.pw/ajax.php', {
-                mod: 'ftps',
-                cmd: 'edit',
-                type: item.type,
-                id: item.id,
-                name: item.name,
-                login: item.login,
-                password: item.password,
-                server: item.server
-            },
-            function(data) {
-                item.id = data.id;
-                dispatcher.dispatch({
-                    type: "CREATE_FTP",
-                    data: item
-                });
-            },
-            'json'
-        );*/
-
         dispatch({
-            type:"ADD_FTP",
+            type: ADD,
             payload: item
         });
 
@@ -37,29 +15,8 @@ export function addFtp(item) {
 
 export function editFtp(item) {
     return function(dispatch) {
-        /*$.post(
-            'http://test.byeccentric.pw/ajax.php', {
-                mod: 'ftps',
-                cmd: 'edit',
-                type: item.type,
-                id: item.id,
-                name: item.name,
-                login: item.login,
-                password: item.password,
-                server: item.server
-            },
-            function(data) {
-                item.id = data.id;
-                dispatcher.dispatch({
-                    type: "CREATE_FTP",
-                    data: item
-                });
-            },
-            'json'
-        );*/
-
         dispatch({
-            type: "EDIT_FTP",
+            type: EDIT,
             payload: item
         });
 
@@ -68,24 +25,8 @@ export function editFtp(item) {
 
 export function deleteFtp(id) {
     return function(dispatch) {
-        /*$.post(
-            'http://test.byeccentric.pw/ajax.php', {
-                mod: 'ftps',
-                cmd: 'edit',
-                type: 'delete',
-                id
-            },
-            function() {
-                dispatch({
-                    type: "DELETE_FTP",
-                    payload: id,
-                });
-            },
-            'json'
-        );*/
-
         dispatch({
-            type: "DELETE_FTP",
+            type: DELETE,
             payload: id,
         });
     }
@@ -96,42 +37,13 @@ export function getFtps() {
         dispatch({
             type: FETCHING
         })
-        fetch(urls.request,
-            {
-                method: 'POST',
-                /*headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },*/
-                body: JSON.stringify({mod: 'ftps', cmd: 'get',})
+
+        setTimeout(function() {
+            let data = [{"id":1,"name":"FTPS #1","login":"login_ftp1","password":"password","server":"localhost","type":"ftp"},{"id":2,"name":"FTPS #2","login":"login_ftp2","password":"password","server":"localhost","type":"ftp"},{"id":3,"name":"FTPS #3","login":"login_ftp1","password":"password","server":"localhost","type":"ftp"}];
+            dispatch({
+                type: FETCHED,
+                payload: data,
             })
-            .then(function(res) {
-                return res.json();
-            })
-            .then(function(data) {
-                console.log(data)
-                //if (data.status === 'ok') {
-                dispatch({
-                    type: FETCHED,
-                    payload: data,
-                })
-                //} else {
-                /*dispatch({
-                    type: FAIL,
-                    payload: errorMsg: messages[data.message],
-                    },
-                    error: true, // https://github.com/redux-utilities/flux-standard-action
-                })
-            //}*/
-            })
-            .catch(function(error) {
-                dispatch({
-                    type: FAIL,
-                    payload: {
-                        errorMsg: messages['network_error'],
-                    },
-                    error: true, // https://github.com/redux-utilities/flux-standard-action
-                })
-            })
+        }, 3000);
     }
 }

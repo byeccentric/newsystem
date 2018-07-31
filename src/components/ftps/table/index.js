@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import {Table, TableBody, TableCell, TableHead, TableRow, Paper} from '@material-ui/core';
 
 import Ftp from './table-row';
 import styles from './table-styles';
 
-function SimpleTable(props) {
+function FtpsTable(props) {
     const { classes } = props;
 
     return (
@@ -30,9 +25,9 @@ function SimpleTable(props) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {props.items.map((n,i) => {
+                        {props.items.map((n) => {
                             return (
-                                <Ftp key={i} {...n} onDelete={props.onDelete}/>
+                                <Ftp key={n.id} {...n} onDelete={props.onDelete}/>
                             );
                         })}
                     </TableBody>
@@ -42,8 +37,9 @@ function SimpleTable(props) {
     );
 }
 
-SimpleTable.propTypes = {
+FtpsTable.propTypes = {
     classes: PropTypes.object.isRequired,
+    items: PropTypes.array.isRequired
 };
 
-export default withStyles(styles)(SimpleTable);
+export default withStyles(styles)(FtpsTable);

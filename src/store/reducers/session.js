@@ -1,6 +1,6 @@
 import { login } from '../../config/app';
 
-let {LOGIN, LOGOUT, FAIL} = login.commands;
+let { LOGIN, LOGOUT, FAIL } = login.commands;
 
 const initialState = {
     user: JSON.parse(localStorage.getItem('user')) || null,

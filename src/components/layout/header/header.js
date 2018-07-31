@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import AppBar from './appbar/';
 
 export default class Header extends Component {
@@ -7,4 +9,8 @@ export default class Header extends Component {
             <AppBar {...this.props} />
         )
     }
+}
+
+Header.proptypes = {
+    title: PropTypes.string.isRequired
 }

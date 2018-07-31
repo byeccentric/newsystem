@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TableCell from '@material-ui/core/TableCell';
-import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
+import {TableCell, TableRow, Button} from '@material-ui/core';
 import { Link } from 'react-router-dom'
 import Clipboard from "clipboard";
 

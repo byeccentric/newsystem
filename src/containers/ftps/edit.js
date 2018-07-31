@@ -5,7 +5,7 @@ import Page from '../../components/layout';
 import Preloader from '../../components/layout/preloader/';
 import Form from '../../components/ftps/form/';
 import TopMenu from '../../components/layout/topmenu';
-import {getFtps, editFtp} from './actions';
+import { getFtps, editFtp } from './actions';
 
 class FtpsEdit extends Page {
     constructor() {

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 export default class Input extends Component {
@@ -29,3 +30,11 @@ export default class Input extends Component {
         )
     }
 }
+
+Input.propTypes = {
+    className: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    value: PropTypes.string
+
+};

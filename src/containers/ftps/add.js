@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import Page from '../../components/layout';
 import Form from '../../components/ftps/form/';
 import TopMenu from '../../components/layout/topmenu';
-import {addFtp, getFtps} from './actions';
+import { addFtp, getFtps } from './actions';
 
 class FtpsAdd extends Page {
     constructor() {

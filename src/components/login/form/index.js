@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import { Button, Typography, Input, InputLabel, InputAdornment, FormControl,TextField } from '@material-ui/core';
+import { AccountCircle, Lock } from '@material-ui/icons';
 
 import styles from './form-styles';
 
@@ -34,11 +28,12 @@ function InputWithIcon(props) {
             <TextField
                 className={classes.margin}
                 id="input-with-icon-textfield"
+                type="password"
                 label="Пароль"
                 InputProps={{
                     startAdornment: (
                         <InputAdornment position="start">
-                            <AccountCircle />
+                            <Lock />
                         </InputAdornment>
                     ),
                 }}

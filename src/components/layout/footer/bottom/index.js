@@ -1,10 +1,6 @@
 import React from 'react';
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Icon from '@material-ui/core/Icon';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { BottomNavigation, BottomNavigationAction, Icon } from '@material-ui/core';
+import { Restore, Favorite, LocationOn } from '@material-ui/icons';
 
 export default class LabelBottomNavigation extends React.Component {
     state = {
@@ -20,9 +16,9 @@ export default class LabelBottomNavigation extends React.Component {
 
         return (
             <BottomNavigation value={value} onChange={this.handleChange}>
-                <BottomNavigationAction label="Recents" value="recents" icon={<RestoreIcon />} />
-                <BottomNavigationAction label="Favorites" value="favorites" icon={<FavoriteIcon />} />
-                <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOnIcon />} />
+                <BottomNavigationAction label="Recents" value="recents" icon={<Restore />} />
+                <BottomNavigationAction label="Favorites" value="favorites" icon={<Favorite />} />
+                <BottomNavigationAction label="Nearby" value="nearby" icon={<LocationOn />} />
                 <BottomNavigationAction label="Folder" value="folder" icon={<Icon>folder</Icon>} />
             </BottomNavigation>
         );
