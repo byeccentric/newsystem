@@ -44,7 +44,7 @@ class FtpsEdit extends Page {
                 <Preloader />
             )
         }
-        let editItem = this.props.ftps.filter(item => item.id === this.props.match.params.id);
+        let editItem = this.props.ftps.filter(item => item.id === parseInt(this.props.match.params.id, 10));
         if (editItem.length > 0) {
             editItem = editItem[0];
             return (
