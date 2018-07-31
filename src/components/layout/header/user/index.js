@@ -54,9 +54,8 @@ class MenuAppBar extends React.Component {
                         open={open}
                         onClose={this.handleClose}
                     >
-                        <MenuItem key="Profile" onClick={this.handleClose} component={(props) => <Link to="/auth" {...props} />}>Profile</MenuItem>
-                        <MenuItem key="asd" onClick={this.handleClose} component={(props) => <Link to="/auth" {...props} />}>My account</MenuItem>
-                        <MenuItem key="dsa" onClick={this.handleClose} component={(props) => <Link to="/auth" {...props} />}>Logout</MenuItem>
+                        <MenuItem key="Profile" onClick={this.handleClose} component={Link} to="/auth">Профиль</MenuItem>
+                        <MenuItem key="dsa" onClick={this.handleClose} component={Link} to="/auth">Выйти</MenuItem>
                     </Menu>
                 </div>
             </React.Fragment>

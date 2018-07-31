@@ -34,7 +34,7 @@ class MenuAppBar extends React.Component {
 
         const MenuItems = routes.filter(i => i.menu)
             .map(item => (
-                <MenuItem key={item.name} onClick={this.handleClose} component={(props) => <Link to={item.path} {...props} />}>{item.name}</MenuItem>
+                <MenuItem key={item.name} onClick={this.handleClose} component={Link} to={item.path}>{item.name}</MenuItem>
             ))
 
         return (

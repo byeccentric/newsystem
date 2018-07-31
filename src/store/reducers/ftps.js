@@ -54,7 +54,7 @@ export default function reducer(state = initialState, action) {
         case "DELETE_FTP": {
             return {
                 ...state,
-                items: state.items.filter(ftp => parseInt(ftp.id, 10) !== action.payload)
+                items: state.items.filter(ftp => parseInt(ftp.id, 10) !== parseInt(action.payload, 10))
             }
         }
 

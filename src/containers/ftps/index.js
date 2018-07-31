@@ -5,7 +5,7 @@ import Page from '../../components/layout';
 import Table from '../../components/ftps/table/';
 import Preloader from '../../components/layout/preloader/';
 import TopMenu from '../../components/layout/topmenu';
-import {getFtps} from './actions';
+import {getFtps, deleteFtp} from './actions';
 
 class Ftps extends Page {
     constructor() {
@@ -32,15 +32,29 @@ class Ftps extends Page {
         )
     }
 
+    deleteItem = (e) => {
+        const id = e.currentTarget.getAttribute('data-id');
+        this.props.dispatch(deleteFtp(id))
+    }
+
     content() {
         if (this.props.fetching) {
             return (
                 <Preloader />
             )
         }
+
+        if (this.props.ftps && this.props.ftps.length > 0) {
+            return (
+                <React.Fragment>
+                    <Table items={this.props.ftps} onDelete={this.deleteItem}/>
+                </React.Fragment>
+            )
+        }
+
         return (
             <React.Fragment>
-                <Table items={this.props.ftps} />
+                <h2>Не было найдено записей, необходимо их добавить</h2>
             </React.Fragment>
         )
     }

@@ -20,11 +20,8 @@ class FtpsEdit extends Page {
         }
     }
 
-    changeFtp(event) {
-        let data = {
-            id: this.props.match.params.id
-        };
-        Array.from(event.target.querySelectorAll('input')).map(item => data[item.getAttribute('id')] = item.value);
+    changeFtp(data) {
+        data.id = this.props.match.params.id;
         this.props.dispatch(editFtp(data));
     }
 
@@ -52,7 +49,7 @@ class FtpsEdit extends Page {
             editItem = editItem[0];
             return (
                 <React.Fragment>
-                    <Form name={editItem.name} item={editItem} onSubmit={this.changeFtp.bind(this)} />
+                    <Form {...editItem} onSubmit={this.changeFtp.bind(this)} />
                 </React.Fragment>
             )
         }

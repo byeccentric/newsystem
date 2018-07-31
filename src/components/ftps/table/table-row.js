@@ -38,8 +38,8 @@ class ftpRow extends Component {
                     <Button className={classes.button + ' copyMe'} data-clipboard-target={"#dataid" + id}>Копировать данные</Button>
                 </TableCell>
                 <TableCell className={classes.centered}>
-                    <Button color="primary" className={classes.button} component={(props) => <Link to={'/ftps/edit/'+id} {...props} />}>Изменить</Button>
-                    <Button color="secondary" className={classes.button}>Удалить</Button>
+                    <Button color="primary" className={classes.button} to={'/ftps/edit/'+id} component={Link}>Изменить</Button>
+                    <Button color="secondary" className={classes.button} data-id={id} onClick={this.props.onDelete.bind(id)}>Удалить</Button>
                 </TableCell>
             </TableRow>
         );
@@ -48,6 +48,11 @@ class ftpRow extends Component {
 
 ftpRow.propTypes = {
     classes: PropTypes.object.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    login: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+    server: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(ftpRow);

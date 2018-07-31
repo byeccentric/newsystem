@@ -32,7 +32,7 @@ function SimpleTable(props) {
                     <TableBody>
                         {props.items.map((n,i) => {
                             return (
-                                <Ftp key={i} {...n} />
+                                <Ftp key={i} {...n} onDelete={props.onDelete}/>
                             );
                         })}
                     </TableBody>

@@ -15,7 +15,7 @@ const styles = theme => ({
 
 function TopMenu(props) {
     const {classes} = props;
-    const Buttons = props.links.map((item,index)=> (<Button key={index} className={classes.button} component={(props) => (<Link to={item.link} {...props} />)}>{item.name}</Button>))
+    const Buttons = props.links.map((item,index)=> (<Button key={index} className={classes.button} component={Link} to={item.link}>{item.name}</Button>))
     return (
         <div className={classes.wrapper}>
             {Buttons}
@@ -25,6 +25,7 @@ function TopMenu(props) {
 
 TopMenu.propTypes = {
     classes: PropTypes.object.isRequired,
+    links: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(TopMenu);

@@ -2,41 +2,31 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close'
+import Typography from '@material-ui/core/Typography';
 
+import Input from './input';
 import styles from './form-styles';
 
 class form extends Component {
     constructor(props) {
         super();
-        props.item ?
-            this.state = {
-                ...props.item,
-                open: false
-            } :
-            this.state = {
-                name: '',
-                login: '',
-                password: '',
-                server: '',
-                open: false
-            };
+        this.state = {
+            open: false
+        }
     }
-
-    handleChange = () => event => {
-        this.setState({
-            [event.target.getAttribute('id')]: event.target.value,
-        });
-    };
 
     onSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit(event);
+        let oldData = JSON.parse(JSON.stringify(this.props));
+        let data = {};
+        Array.from(event.target.querySelectorAll('input')).forEach(item => data[item.getAttribute('id')] = item.value);
+        this.props.onSubmit(data);
         this.setState({
-            open: true
+            open: true,
+            oldData: oldData
         });
     };
 
@@ -48,45 +38,24 @@ class form extends Component {
         this.setState({ open: false });
     };
 
+    handleUndo() {
+        this.props.onSubmit(this.state.oldData);
+        this.handleClose()
+    }
+
     render() {
-        const {classes} = this.props;
-        let item = this.state;
+        let {classes, name, login, password, server} = this.props;
+
         return (
-            <form action="/ftps" className={classes.container} noValidate autoComplete="off" onSubmit={this.onSubmit.bind(this)}>
-                <h2>{this.props.name || 'Добавить'}</h2>
-                <TextField
-                    id="name"
-                    label="Название"
-                    className={classes.textField}
-                    value={item.name}
-                    onChange={this.handleChange()}
-                    margin="normal"
-                />
-                <TextField
-                    id="login"
-                    label="Логин"
-                    className={classes.textField}
-                    value={item.login}
-                    onChange={this.handleChange()}
-                    margin="normal"
-                />
-                <TextField
-                    id="password"
-                    label="Пароль"
-                    className={classes.textField}
-                    value={item.password}
-                    onChange={this.handleChange()}
-                    margin="normal"
-                />
-                <TextField
-                    id="server"
-                    label="Сервер"
-                    className={classes.textField}
-                    value={item.server}
-                    onChange={this.handleChange()}
-                    margin="normal"
-                />
-                <Button variant="contained" color="primary" className={classes.button} component={"Button"}>
+            <form className={classes.container} noValidate autoComplete="off" onSubmit={this.onSubmit.bind(this)}>
+                <Typography variant="title" color="inherit">
+                    {name || 'Добавить'}
+                </Typography>
+                <Input className={classes.textField} value={name} type="name" label="Название"/>
+                <Input className={classes.textField} value={login} type="login" label="Логин"/>
+                <Input className={classes.textField} value={password} type="password" label="Пароль"/>
+                <Input className={classes.textField} value={server} type="server" label="Сервер"/>
+                <Button variant="contained" type="submit" color="primary" className={classes.button}>
                     {this.props.name ? 'Изменить' : 'Добавить'}
                 </Button>
 
@@ -103,6 +72,9 @@ class form extends Component {
                     }}
                     message={<span id="message-id">FTP {this.props.name ? 'Изменен' : 'Добавлен'}</span>}
                     action={[
+                        this.props.name && (<Button key="undo" color="secondary" size="small" onClick={this.handleUndo.bind(this)}>
+                            Отменить
+                        </Button>),
                         <IconButton
                             key="close"
                             aria-label="Close"
